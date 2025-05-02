@@ -1,0 +1,13 @@
+public class CurrencyConversion {
+    public static void main() {
+        Double usd = 100;
+        Double conversionRate = 83.2; // Example rate: 1 USD = 83.2 INR
+
+        Double inr = usd * conversionRate;
+        System.debug(usd + ' USD = ' + inr + ' INR');
+
+        Double rupees = 8320;
+        Double dollars = rupees / conversionRate;
+        System.debug(rupees + ' INR = ' + dollars + ' USD');
+    }
+}

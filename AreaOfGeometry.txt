@@ -1,0 +1,13 @@
+public class GeometryArea {
+    public static void main() {
+        Double radius = 5;
+        Double length = 10;
+        Double width = 4;
+
+        Double circleArea = Math.PI * radius * radius;
+        Double rectangleArea = length * width;
+
+        System.debug('Area of Circle: ' + circleArea);
+        System.debug('Area of Rectangle: ' + rectangleArea);
+    }
+}

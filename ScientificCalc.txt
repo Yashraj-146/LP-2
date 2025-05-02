@@ -1,0 +1,16 @@
+public class ScientificCalculator {
+    public static void main() {
+        Double a = 16;
+        Double b = 4;
+
+        System.debug('Addition: ' + (a + b));
+        System.debug('Subtraction: ' + (a - b));
+        System.debug('Multiplication: ' + (a * b));
+        System.debug('Division: ' + (a / b));
+        System.debug('Power (a^b): ' + Math.pow(a, b));
+        System.debug('Square root of a: ' + Math.sqrt(a));
+        System.debug('Sine of a (radians): ' + Math.sin(a));
+        System.debug('Cosine of a (radians): ' + Math.cos(a));
+        System.debug('Log (base e) of a: ' + Math.log(a));
+    }
+}

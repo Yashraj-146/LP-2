@@ -1,0 +1,13 @@
+public class ArrayAddition {
+    public static void main() {
+        Integer[] arr1 = new Integer[]{1, 2, 3};
+        Integer[] arr2 = new Integer[]{4, 5, 6};
+        Integer[] sumArray = new Integer[arr1.size()];
+
+        for (Integer i = 0; i < arr1.size(); i++) {
+            sumArray[i] = arr1[i] + arr2[i];
+        }
+
+        System.debug('Sum Array: ' + sumArray);
+    }
+}
