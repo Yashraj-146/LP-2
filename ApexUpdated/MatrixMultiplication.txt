@@ -1,0 +1,37 @@
+public class MatrixMultiplication {
+
+    // Method to multiply two matrices
+    public static List<List<Integer>> multiplyMatrices(List<List<Integer>> matrixA, List<List<Integer>> matrixB) {
+        Integer rowsA = matrixA.size();
+        Integer colsA = matrixA[0].size();
+        Integer rowsB = matrixB.size();
+        Integer colsB = matrixB[0].size();
+
+        // Ensure valid matrix dimensions
+        if (colsA != rowsB) {
+            throw new IllegalArgumentException('Number of columns of A must equal number of rows of B');
+        }
+
+        List<List<Integer>> result = new List<List<Integer>>();
+
+        for (Integer i = 0; i < rowsA; i++) {
+            List<Integer> row = new List<Integer>();
+            for (Integer j = 0; j < colsB; j++) {
+                Integer sum = 0;
+                for (Integer k = 0; k < colsA; k++) {
+                    sum += matrixA[i][k] * matrixB[k][j];
+                }
+                row.add(sum);
+            }
+            result.add(row);
+        }
+
+        return result;
+    }
+
+    public static void printMatrix(List<List<Integer>> matrix) {
+        for (List<Integer> row : matrix) {
+            System.debug(row);
+        }
+    }
+}
