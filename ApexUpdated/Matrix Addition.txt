@@ -23,3 +23,18 @@ public class MatrixOperations {
         }
     }
 }
+
+
+Execution:
+List<List<Integer>> A = new List<List<Integer>> {
+    new List<Integer>{1, 2},
+    new List<Integer>{3, 4}
+};
+
+List<List<Integer>> B = new List<List<Integer>> {
+    new List<Integer>{5, 6},
+    new List<Integer>{7, 8}
+};
+
+List<List<Integer>> resultAdd = MatrixOperations.addMatrices(A, B);
+MatrixOperations.printMatrix(resultAdd);
