@@ -1,0 +1,42 @@
+// --- 2. Generate Student Mark Sheet
+public class Marksheet {
+    public void generate(String name, Integer[] marks) {
+        if (String.isBlank(name)) {
+            System.debug('Student name is required.');
+            return;
+        }
+
+        if (marks == null || marks.isEmpty()) {
+            System.debug('Marks data is missing for ' + name + '.');
+            return;
+        }
+
+        Integer total = 0;
+        for (Integer mark : marks) {
+            if (mark != null) total += mark;
+        }
+
+        Double percentage = total / (Double) marks.size();
+        String grade;
+
+        if (percentage >= 90) grade = 'A+';
+        else if (percentage >= 80) grade = 'A';
+        else if (percentage >= 70) grade = 'B';
+        else if (percentage >= 60) grade = 'C';
+        else if (percentage >= 50) grade = 'D';
+        else grade = 'F';
+
+        System.debug('--- Marksheet ---');
+        System.debug('Student Name : ' + name);
+        System.debug('Subjects      : ' + marks.size());
+        System.debug('Total Marks   : ' + total);
+        System.debug('Percentage    : ' + percentage + '%');
+        System.debug('Grade         : ' + grade);
+        System.debug('----------------');
+    }
+}
+
+
+// To execute in Anonymous Window:
+Marksheet ms = new Marksheet();
+ms.generate('Ram Bansal', new Integer[]{85, 90, 78, 92});
