@@ -36,3 +36,12 @@ public class CurrencyConverter {
         }
     }
 }
+
+
+
+// To execute in Anonymous Window:
+// Convert 1000 INR to USD
+CurrencyConverter cc = new CurrencyConverter();
+cc.convertCurrency('INR', 'USD', 1000);
+cc.convertCurrency('USD', 'INR', 50);
+cc.convertCurrency('USD', 'Pound', 25);
