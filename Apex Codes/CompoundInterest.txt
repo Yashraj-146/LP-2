@@ -1,0 +1,45 @@
+// --- 7. Compound Interest
+public class CompoundInterest {
+    public class Result {
+        public Double principal;
+        public Double rate;
+        public Integer time;
+        public Integer frequency;
+        public Double interest;
+        public Double totalAmount;
+    }
+
+    public Result calculate(Double p, Double r, Integer t, Integer n) {
+        Result res = new Result();
+
+        if (p == null || r == null || t == null || n == null || p < 0 || r < 0 || t < 0 || n <= 0) {
+            System.debug('Error: Invalid input values.');
+            return null;
+        }
+
+        Double amount = p * Math.pow((1 + r / (100 * n)), n * t);
+        Double ci = amount - p;
+
+        res.principal = p;
+        res.rate = r;
+        res.time = t;
+        res.frequency = n;
+        res.interest = Math.round(ci * 100.0) / 100.0;
+        res.totalAmount = Math.round(amount * 100.0) / 100.0;
+
+        System.debug('Principal: ₹' + p);
+        System.debug('Annual Interest Rate: ' + r + '%');
+        System.debug('Time Period: ' + t + ' years');
+        System.debug('Compounded ' + n + ' times per year');
+        System.debug('Compound Interest: ₹' + res.interest);
+        System.debug('Total Amount: ₹' + res.totalAmount);
+
+        return res;
+    }
+}
+
+
+
+// To execute in Anonymous Window:
+CompoundInterest ci = new CompoundInterest();
+ci.calculate(5000.0, 5.5, 3, 4); // Quarterly compounding
