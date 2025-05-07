@@ -1,0 +1,35 @@
+// --- 9. BFS Traversal
+public class BFS {
+    public void bfs(List<List<Integer>> graph, Integer start) {
+        Set<Integer> visited = new Set<Integer>();
+        Queue<Integer> queue = new Queue<Integer>();  // Corrected Queue declaration
+        queue.add(start);
+        visited.add(start);
+
+        while (!queue.isEmpty()) {
+            Integer node = queue.poll();  // Get the first node from the queue
+            System.debug('Visited node: ' + node);
+
+            // Visit all neighbors of the current node
+            for (Integer neighbor : graph.get(node)) {
+                if (!visited.contains(neighbor)) {
+                    queue.add(neighbor);
+                    visited.add(neighbor);
+                }
+            }
+        }
+    }
+}
+
+
+
+// To execute in Anonymous Window:
+BFS bfs = new BFS();
+List<List<Integer>> graph = new List<List<Integer>>{
+    new List<Integer>{1, 2},
+    new List<Integer>{0, 3, 4},
+    new List<Integer>{0},
+    new List<Integer>{1},
+    new List<Integer>{1}
+};
+bfs.bfs(graph, 0);
