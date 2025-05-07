@@ -1,34 +1,33 @@
 #include<iostream>
-#include<unordered_map>
-#include<queue>
 #include<vector>
-
+#include<queue>
+#include<unordered_map>
 using namespace std;
 
 class Graph {
-    
-    unordered_map<int, vector<int>> adjList;
-    
-    public:
-    void addnode(int u, int v) {
-        adjList[u].push_back(v);
-        adjList[v].push_back(u);
+public:
+    unordered_map<int, vector<int>> adj;
+
+    void addEdge(int u, int v) {
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
 
     vector<int> bfs(int src, int n) {
         queue<int> q;
-        vector<int> ans;
         vector<int> vis(n+1, 0);
-        q.push(src);
+        vector<int> ans;
+
         vis[src] = 1;
+        q.push(src);
 
         while(!q.empty()) {
-            auto front = q.front();
+            int node = q.front();
             q.pop();
-            ans.push_back(front);
 
-            for(auto nbr : adjList[front])
-            {
+            ans.push_back(node);
+
+            for(auto nbr : adj[node]) {
                 if(vis[nbr] == 0)
                 {
                     vis[nbr] = 1;
@@ -40,42 +39,44 @@ class Graph {
     }
 
     void dfs(int src, vector<int> &vis, vector<int> &ans) {
-        ans.push_back(src);
         vis[src] = 1;
-        for(auto nbr : adjList[src]) {
+        ans.push_back(src);
+
+        for(auto nbr : adj[src]) {
             if(vis[nbr] == 0) {
                 dfs(nbr, vis, ans);
             }
         }
     }
+
 };
 
 int main() {
     Graph g;
-    // Graph structure:
-    //      0
-    //     / \
-    //    1   2
-    //   / \
-    //  3   4
-    int n = 5;
+    int n, m;
+    cout << "Enter number of nodes and edges: ";
+    cin >> n >> m;
 
-    g.addnode(0, 1);
-    g.addnode(0, 2);
-    g.addnode(1, 3);
-    g.addnode(1, 4);
+    cout << "Enter " << m << " edges (u v):\n";
+    for (int i = 0; i < m; ++i) {
+        int u, v;
+        cin >> u >> v;
+        g.addEdge(u, v);
+    }
 
-    vector<int> bfs = g.bfs(0, n);
-    for(auto i : bfs)
-        cout<<i<<" ";
-    cout<<endl;
+    cout << "BFS Traversal: ";
+    vector<int> bfs_result = g.bfs(0, n);
+    for (int node : bfs_result)  
+        cout << node << " ";
+    cout << endl;
 
-    vector<int>vis(n+1, 0);
-    vector<int>dfs;
-    
+    vector<int> vis(n + 1, 0);
+    vector<int> dfs;
     g.dfs(0, vis, dfs);
-    for(auto i : dfs)
-        cout<<i<<" ";
+
+    cout << "DFS Traversal: ";
+    for (int node : dfs) cout << node << " ";
+    cout << endl;
 
     return 0;
 }
