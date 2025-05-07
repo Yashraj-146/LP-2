@@ -1,0 +1,25 @@
+public class MatrixOperations {
+
+    // Method to add two matrices
+    public static List<List<Integer>> addMatrices(List<List<Integer>> matrixA, List<List<Integer>> matrixB) {
+        Integer rows = matrixA.size();
+        Integer cols = matrixA[0].size();
+        
+        List<List<Integer>> result = new List<List<Integer>>();
+
+        for (Integer i = 0; i < rows; i++) {
+            List<Integer> row = new List<Integer>();
+            for (Integer j = 0; j < cols; j++) {
+                row.add(matrixA[i][j] + matrixB[i][j]);
+            }
+            result.add(row);
+        }
+        return result;
+    }
+
+    public static void printMatrix(List<List<Integer>> matrix) {
+        for (List<Integer> row : matrix) {
+            System.debug(row);
+        }
+    }
+}
