@@ -35,3 +35,18 @@ public class MatrixMultiplication {
         }
     }
 }
+
+// Anonymous window:
+
+List<List<Integer>> A = new List<List<Integer>> {
+    new List<Integer>{1, 2},
+    new List<Integer>{3, 4}
+};
+
+List<List<Integer>> B = new List<List<Integer>> {
+    new List<Integer>{2, 0},
+    new List<Integer>{1, 2}
+};
+
+List<List<Integer>> resultMul = MatrixMultiplication.multiplyMatrices(A, B);
+MatrixMultiplication.printMatrix(resultMul);
